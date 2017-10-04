@@ -2,6 +2,8 @@ package semestralniPrace;
 
 import java.awt.Dimension;
 import javax.swing.JToggleButton;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 public class Match extends JToggleButton {
@@ -20,6 +22,14 @@ public class Match extends JToggleButton {
         setToolTipText(Integer.toString(this.group));
         setPreferredSize(new Dimension(70, 30));
         addActionListener(new MatchAction(this));
+        addChangeListener(new ChangeListener() {
+            
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
     }
     public int getGroup(){
         return this.group;
