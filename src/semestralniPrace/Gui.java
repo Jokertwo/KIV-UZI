@@ -1,8 +1,6 @@
 package semestralniPrace;
 
 import java.awt.GridLayout;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -32,18 +30,6 @@ public class Gui {
             }
             frame.add(panel);
         }
-        
-        frame.addPropertyChangeListener(new PropertyChangeListener() {
-            
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                
-                if(evt.getPropertyName().equals(Helper.DISABLE)){
-                    System.out.println(evt.getNewValue());
-                }
-                
-            }
-        });
     }
 
 
