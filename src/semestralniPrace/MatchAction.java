@@ -2,28 +2,34 @@ package semestralniPrace;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.AbstractButton;
+import javax.swing.AbstractAction;
 
 
-public class MatchAction implements ActionListener {
+public class MatchAction extends AbstractAction {
 
-    Match match;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private int group;
 
-
-    public MatchAction(Match match) {
-        this.match = match;
+    public MatchAction(String title,int group) {
+        super(title);
+        this.group = group;
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        AbstractButton absBtn = (AbstractButton) e.getSource();
+        Match absBtn = (Match) e.getSource();
 
         if (absBtn.getModel().isSelected()) {
-            match.setForeground(Color.RED);
+            absBtn.setForeground(Color.RED);
+            Helper.disableButton(this.group);
+            
         } else {
-            match.setForeground(null);
+            absBtn.setForeground(null);
+            Helper.enableButton(this.group);
         }
 
     }
