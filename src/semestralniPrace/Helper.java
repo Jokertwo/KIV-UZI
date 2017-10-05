@@ -1,6 +1,8 @@
 package semestralniPrace;
 
 public class Helper {
+    
+    public static final String PANEL = "panel";
 
     public static long toBinary(long number) {
         String temp = Long.toBinaryString(number);
