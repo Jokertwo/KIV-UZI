@@ -2,6 +2,7 @@ package semestralniPrace;
 
 import java.awt.Dimension;
 import javax.swing.JToggleButton;
+import Actions.MatchAction;
 
 
 public class Match extends JToggleButton {
