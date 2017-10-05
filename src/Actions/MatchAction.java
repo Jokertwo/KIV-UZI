@@ -1,8 +1,10 @@
-package semestralniPrace;
+package Actions;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import semestralniPrace.Helper;
+import semestralniPrace.Match;
 
 
 public class MatchAction extends AbstractAction {
