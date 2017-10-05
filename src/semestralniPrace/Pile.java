@@ -1,64 +1,59 @@
 package semestralniPrace;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
 
-public class Pile {
+public class Pile extends JPanel {
 
-    private List<Match> matches;
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private int group;
     private boolean isEnable = true;
 
 
-    public Pile(int countOfMatches,int group) {
+    public Pile(int maxMatches, int group) {
         this.group = group;
-        init(countOfMatches,group);
-        
+
+        setLayout(new GridLayout(0, maxMatches, 3, 0));
+        init((int) (Math.random() * maxMatches) + 1, group);
     }
 
 
-    private void init(int countOfMatches,int group) {
-        matches = new ArrayList<>();
+    private void init(int countOfMatches, int group) {
         for (int i = 0; i < countOfMatches; i++) {
-            matches.add(new Match(Integer.toString(i),group));
+            add(new Match(Integer.toString(i), group, this));
         }
     }
-    
-    public List<Match> getMatches(){
-        return matches;
-    }
 
 
-    public int getCountOfMatches() {
-        return matches.size();
-    }
-
-
-    public void removeMatch(int number) {
-
-        for (int i = 0; i < number; i++) {
-            matches.remove(matches.size() - 1);
+    public void setEnableMathes(boolean value) {
+        for (int i = 0; i < getComponentCount(); i++) {
+            getComponent(i).setEnabled(value);
         }
+        this.isEnable = value;
     }
-    
-    public void setMatchDisable(){
-        for(Match item: matches){
-            item.setEnabled(false);
+
+
+    public boolean isSomeMatchSelect() {
+        for (int i = 0; i < getComponentCount(); i++) {
+            Match match = (Match) getComponent(i);
+            if (match.isSelected()) {
+                return true;
+            }
         }
-        isEnable = false;
+        return false;
     }
-    
-    public void setMatchEnable(){
-        for(Match item : matches){
-            item.setEnabled(true);
-        }
-        isEnable = true;
-    }
-    public boolean getIsEnable(){
+
+
+    public boolean getIsEnable() {
         return this.isEnable;
     }
-    public int getGroup(){
+
+
+    public int getGroup() {
         return this.group;
     }
 
