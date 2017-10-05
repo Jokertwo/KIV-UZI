@@ -1,10 +1,6 @@
 package semestralniPrace;
 
 public class Helper {
-    
-    public static final int TRUE = 1;
-    public static final int FALSE = 0;
-    public static final String DISABLE = "disable";
 
     public static long toBinary(long number) {
         String temp = Long.toBinaryString(number);
@@ -19,6 +15,37 @@ public class Helper {
             result = result ^ item;
         }
         return toBinary(result);
+    }
+    
+    
+    public static void disableButton(int group) {
+
+        for (Pile pile : GameDesk.getPileList()) {
+
+            if (pile.getGroup() != group && pile.getIsEnable()) {
+                pile.setEnableMathes(false);
+            }
+        }
+    }
+
+
+    public static Pile getPile(int group) {
+        Pile pile = null;
+        for (Pile tempPile :GameDesk.getPileList()) {
+            if (tempPile.getGroup() == group) {
+                pile = tempPile;
+            }
+        }
+        return pile;
+    }
+
+
+    public static void enableButton(int group) {
+        if (!getPile(group).isSomeMatchSelect()) {
+            for (Pile pile : GameDesk.getPileList()) {
+                pile.setEnableMathes(true);
+            }
+        }
     }
 
 }
