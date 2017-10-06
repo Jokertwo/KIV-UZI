@@ -1,10 +1,9 @@
 package semestralniPrace;
 
-import java.awt.GridLayout;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import net.miginfocom.swing.MigLayout;
 
 
 public class GameDesk extends JPanel {
@@ -18,9 +17,8 @@ public class GameDesk extends JPanel {
 
 
     public GameDesk() {
-        setLayout(new GridLayout(countOfPile, 0, 10, 10));
+        setLayout(new MigLayout());
         createGameDesk(countOfPile);
-        setBounds(new Rectangle(10,100));
     }
     
     public static List<Pile> getPileList(){
@@ -31,10 +29,11 @@ public class GameDesk extends JPanel {
     public void createGameDesk(int countOfPile) {
         piles = new ArrayList<>();
         for (int i = 0; i < countOfPile; i++) {
-            Pile pile = new Pile(9, i);
-            add(pile);
+            Pile pile = new Pile(countOfPile, i);
+            add(pile,"wrap");
             piles.add(pile);
         }
+        
     }
 
 }
