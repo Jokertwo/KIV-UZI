@@ -3,8 +3,8 @@ package semestralniPrace;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import Actions.ExitGameAction;
-import Actions.NewGameAction;
+import actions.ExitGameAction;
+import actions.NewGameAction;
 
 
 public class MenuBar extends JMenuBar {
