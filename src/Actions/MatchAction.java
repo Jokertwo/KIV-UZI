@@ -1,8 +1,8 @@
-package Actions;
+package actions;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import javax.swing.SwingUtilities;
 import semestralniPrace.Helper;
 import semestralniPrace.Match;
 
@@ -15,8 +15,8 @@ public class MatchAction extends AbstractAction {
     private static final long serialVersionUID = 1L;
     private int group;
 
-    public MatchAction(String title,int group) {
-        super(title);
+
+    public MatchAction(int group) {
         this.group = group;
     }
 
@@ -26,12 +26,24 @@ public class MatchAction extends AbstractAction {
         Match absBtn = (Match) e.getSource();
 
         if (absBtn.getModel().isSelected()) {
-            absBtn.setForeground(Color.RED);
-            Helper.disableButton(this.group);
-            
+            SwingUtilities.invokeLater(new Runnable() {
+
+                @Override
+                public void run() {
+                    Helper.disableButton(group);
+
+                }
+            });
+
         } else {
-            absBtn.setForeground(null);
-            Helper.enableButton(this.group);
+            SwingUtilities.invokeLater(new Runnable() {
+
+                @Override
+                public void run() {
+                    Helper.enableButton(group);
+                }
+            });
+
         }
 
     }

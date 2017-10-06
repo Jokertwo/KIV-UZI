@@ -1,8 +1,10 @@
-package Actions;
+package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import net.miginfocom.swing.MigLayout;
 import semestralniPrace.GameDesk;
 import semestralniPrace.Gui;
@@ -23,24 +25,46 @@ public class NewGameAction implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         JPanel panel = new JPanel();
-        panel.add(new GameDesk());
+        
         panel.setLayout(new MigLayout());
-        removePanel();
-        frame.add(panel);
-        addPanel(panel);
+        panel.add(new GameDesk());
+
+
+        
+
+        JButton remove = new JButton("Remove");
+        remove.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        Helper.removeButton();
+                    }
+                });
+
+            }
+        });
+
+        
+        frame.add(panel,"wrap");
+        frame.add(remove);
         frame.pack();
+        frame.setLocationRelativeTo(null);
     }
 
 
     private void removePanel() {
-        if (frame.getMap().containsKey(Helper.PANEL)) {
-            frame.remove(frame.getMap().get(Helper.PANEL));
+        if (Gui.getMap().containsKey(Helper.PANEL)) {
+            frame.remove(Gui.getMap().get(Helper.PANEL));
         }
     }
 
 
     private void addPanel(JPanel panel) {
-        frame.getMap().put(Helper.PANEL, panel);
+        Gui.getMap().put(Helper.PANEL, panel);
     }
 
 }
