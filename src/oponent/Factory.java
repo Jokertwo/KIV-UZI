@@ -1,4 +1,4 @@
-package computer;
+package oponent;
 
 public class Factory {
 

@@ -20,7 +20,7 @@ public class Gui extends JFrame {
 
 
     public Gui() {
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new MigLayout("w 300,h 300"));
         component.put(Helper.FRAME, this);
         setJMenuBar(new MenuBar());
@@ -38,7 +38,7 @@ public class Gui extends JFrame {
 
 
     public void addWindowListener() {
-        addWindowListener(new ExitGameAction());
+//        addWindowListener(new ExitGameAction());
     }
 
 }

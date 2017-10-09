@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import net.miginfocom.swing.MigLayout;
+import oponent.EasyOponent;
+import oponent.Oponent;
 
 
 public class GameDesk extends JPanel {
@@ -16,46 +17,39 @@ public class GameDesk extends JPanel {
      * 
      */
     private static final long serialVersionUID = 1L;
-    private static final int countOfPile = 9;
-    private static List<Pile> piles;
-
+    public static List<Pile> piles;
+    private Oponent oponent;
 
     public GameDesk() {
         setLayout(new MigLayout());
-        createGameDesk(countOfPile);
+        createGameDesk();
         add(addRemoveButton());
-    }
-    
-    public static List<Pile> getPileList(){
-        return piles;
+        oponent = new EasyOponent();
     }
 
 
-    public void createGameDesk(int countOfPile) {
+    public void createGameDesk() {
+        int countOfPile = Integer.parseInt(Helper.gameSetting.get(Helper.NUMBER_OF_PILE));
         piles = new ArrayList<>();
-        for (int i = 0; i < countOfPile; i++) {
-            Pile pile = new Pile(countOfPile, i);
-            add(pile,"wrap");
+        for (int group = 0; group < countOfPile; group++) {
+            Pile pile = new Pile(group);
+            add(pile, "wrap");
             piles.add(pile);
         }
-        
+
     }
-    
-    public JButton addRemoveButton(){
+
+
+    public JButton addRemoveButton() {
         JButton remove = new JButton("Remove");
         remove.addActionListener(new ActionListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    @Override
-                    public void run() {
+            public void actionPerformed(ActionEvent e) {            
                         Helper.removeButton();
+                        Thread thread = new Thread((Runnable)oponent);
+                        thread.start();
                     }
-                });
-
-            }
         });
         return remove;
     }

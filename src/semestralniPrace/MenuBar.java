@@ -4,7 +4,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import actions.ExitGameAction;
-import actions.NewGameAction;
+import actions.GetSettingForNewGameAction;
 
 
 public class MenuBar extends JMenuBar {
@@ -24,7 +24,7 @@ public class MenuBar extends JMenuBar {
         JMenu game = new JMenu("Game");
 
         JMenuItem newGame = new JMenuItem("New Game");
-        newGame.addActionListener(new NewGameAction());
+        newGame.addActionListener(new GetSettingForNewGameAction());
 
         JMenuItem exitGame = new JMenuItem("Exit");
         exitGame.addActionListener(new ExitGameAction());
