@@ -3,6 +3,7 @@ package semestralniPrace;
 public class Helper {
 
     public static final String PANEL = "panel";
+    public static final String FRAME = "frame";
 
 
     public static long toBinary(long number) {
