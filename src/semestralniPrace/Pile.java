@@ -1,6 +1,7 @@
 package semestralniPrace;
 
 import java.awt.Component;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
@@ -14,6 +15,7 @@ public class Pile extends JPanel {
     private int group;
     private int countOfMatches;
     private boolean isEnable = true;
+    private JLabel label;
 
 
     public Pile(int maxMatches, int group) {
@@ -27,14 +29,11 @@ public class Pile extends JPanel {
 
 
     private void init(int group) {
+        label = new JLabel(Integer.toString(countOfMatches)); 
+        add(label);
         for (int i = 0; i < countOfMatches; i++) {
             add(new Match(group));
         }
-    }
-
-
-    private void dispose() {
-        getParent().remove(this);
     }
 
 
@@ -52,25 +51,29 @@ public class Pile extends JPanel {
     public void removeMatches() {
         for (Component item : getComponents()) {
             if (item instanceof Match) {
-                Match match = (Match) item;
+                Match match = (Match)item;
                 if (match.isSelected()) {
                     remove(match);
-                    countDownMatches();
-                    revalidate();
+                    label.setText(countDownMatches());
+                    repaint();
                 }
             }
         }
 
     }
+    public void addEmptyButton(){
+        Match match = new Match(group);
+        match.setVisible(false);
+        add(match);
+    }
 
 
-    public void countDownMatches() {
-        if (countOfMatches-- < 0) {
-            System.err.println("Chyba pocet zapalek nemuze byt mensi nez nula");
+    public String countDownMatches() {
+        countOfMatches--;
+        if(countOfMatches == 0){
+            addEmptyButton();
         }
-        if (countOfMatches == 0) {
-            dispose();
-        }
+        return Integer.toString(countOfMatches);
     }
 
 
