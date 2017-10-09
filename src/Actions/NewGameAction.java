@@ -2,13 +2,12 @@ package actions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import net.miginfocom.swing.MigLayout;
 import semestralniPrace.GameDesk;
 import semestralniPrace.Gui;
 import semestralniPrace.Helper;
+import semestralniPrace.SettingGame;
 
 
 public class NewGameAction implements ActionListener {
@@ -16,55 +15,48 @@ public class NewGameAction implements ActionListener {
     Gui frame;
 
 
-    public NewGameAction(Gui frame) {
-        this.frame = frame;
+    public NewGameAction() {
+        this.frame = (Gui)Gui.component.get(Helper.FRAME);;
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        JPanel panel = new JPanel();
-        
-        panel.setLayout(new MigLayout());
-        panel.add(new GameDesk());
+        createGame();
+    }
 
 
-        
-
-        JButton remove = new JButton("Remove");
-        remove.addActionListener(new ActionListener() {
+    private void createGame() {
+        // vytvori novou hraci plochu
+        SwingUtilities.invokeLater(new Runnable() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                SettingGame game = new SettingGame();
+                // odstrani pripadne starou hraci plochu z framu
+                removePanel();
 
-                    @Override
-                    public void run() {
-                        Helper.removeButton();
-                    }
-                });
+                // prida novou hru do framu
+                frame.add(game);
+                // prida hru do mapy
+                addPanel(game);
 
+                frame.pack();
+                frame.setLocationRelativeTo(null);
             }
         });
-
-        
-        frame.add(panel,"wrap");
-        frame.add(remove);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
     }
 
 
     private void removePanel() {
-        if (Gui.getMap().containsKey(Helper.PANEL)) {
-            frame.remove(Gui.getMap().get(Helper.PANEL));
+        if (Gui.component.containsKey(Helper.PANEL)) {
+            frame.remove(Gui.component.get(Helper.PANEL));
         }
     }
 
 
     private void addPanel(JPanel panel) {
-        Gui.getMap().put(Helper.PANEL, panel);
+        Gui.component.put(Helper.PANEL, panel);
     }
 
 }
