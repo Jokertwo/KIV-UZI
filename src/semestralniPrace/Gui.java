@@ -1,16 +1,17 @@
 package semestralniPrace;
 
+import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import actions.ExitGameAction;
 import net.miginfocom.swing.MigLayout;
 
 
 public class Gui extends JFrame {
 
-    private static Map<String, JPanel> map = new HashMap<>();
+    public static Map<String, Component> component = new HashMap<>();
+    public static Map<String, Integer> setting = new HashMap<>();
 
     /**
      * 
@@ -21,8 +22,9 @@ public class Gui extends JFrame {
     public Gui() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new MigLayout("w 300,h 300"));
-        setJMenuBar(new MenuBar(this));
-
+        component.put(Helper.FRAME, this);
+        setJMenuBar(new MenuBar());
+        setTitle("NIM - easy");
         pack();
 
         setVisible(true);
@@ -30,12 +32,9 @@ public class Gui extends JFrame {
         setLocationRelativeTo(null);
         addWindowListener();
 
+        
     }
 
-
-    public static Map<String, JPanel> getMap() {
-        return Gui.map;
-    }
 
 
     public void addWindowListener() {
