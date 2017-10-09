@@ -55,8 +55,6 @@ public class Match extends JToggleButton {
         setBorderPainted(false);
         setContentAreaFilled(false);
         setFocusable(false);
-        setRolloverEnabled(true);
-
     }
 
 
