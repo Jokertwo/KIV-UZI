@@ -13,10 +13,8 @@ public class MenuBar extends JMenuBar {
      * 
      */
     private static final long serialVersionUID = 4452448783385185028L;
-    private Gui frame;
-    
-    public MenuBar(Gui frame) {
-        this.frame = frame;
+
+    public MenuBar() {
         add(game());
         add(help());
     }
@@ -26,7 +24,7 @@ public class MenuBar extends JMenuBar {
         JMenu game = new JMenu("Game");
 
         JMenuItem newGame = new JMenuItem("New Game");
-        newGame.addActionListener(new NewGameAction(this.frame));
+        newGame.addActionListener(new NewGameAction());
 
         JMenuItem exitGame = new JMenuItem("Exit");
         exitGame.addActionListener(new ExitGameAction());
