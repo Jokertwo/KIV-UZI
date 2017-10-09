@@ -1,8 +1,12 @@
 package semestralniPrace;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -19,6 +23,7 @@ public class GameDesk extends JPanel {
     public GameDesk() {
         setLayout(new MigLayout());
         createGameDesk(countOfPile);
+        add(addRemoveButton());
     }
     
     public static List<Pile> getPileList(){
@@ -34,6 +39,25 @@ public class GameDesk extends JPanel {
             piles.add(pile);
         }
         
+    }
+    
+    public JButton addRemoveButton(){
+        JButton remove = new JButton("Remove");
+        remove.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        Helper.removeButton();
+                    }
+                });
+
+            }
+        });
+        return remove;
     }
 
 }
