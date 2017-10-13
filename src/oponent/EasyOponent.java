@@ -1,26 +1,17 @@
 package oponent;
 
 import semestralniPrace.GameDesk;
-import semestralniPrace.Gui;
-import semestralniPrace.Helper;
 import semestralniPrace.Match;
 import semestralniPrace.Pile;
 
 
 public class EasyOponent implements Oponent {
-    Gui frame;
-    public EasyOponent() {
-        this.frame = (Gui) Gui.component.get(Helper.FRAME);
-    }
-    
-    
-
-
+      
     @Override
     public void startPlay() {
         int counter = 0;
         try {
-            Thread.sleep(900);
+            Thread.sleep(100);
         } catch (InterruptedException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -32,7 +23,6 @@ public class EasyOponent implements Oponent {
                 match.doClick();
                 counter++;
                 
-                frame.repaint();
                 try {
                     Thread.sleep(900);
                 } catch (InterruptedException e) {
@@ -41,15 +31,10 @@ public class EasyOponent implements Oponent {
                 }
                 if (counter == numberOfSelection) {
                     break;
-                }
-                
-                
+                }                               
             }
-        }
-        
+        }      
         doClick();
-  
-        frame.repaint();
     }
     
 
