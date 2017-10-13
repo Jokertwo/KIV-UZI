@@ -40,7 +40,9 @@ public class MatchAction extends AbstractAction {
 
                 @Override
                 public void run() {
-                    Helper.enableButton(group);
+                    if (!Helper.isSomeMatchInPileSelected(group)) {
+                        Helper.enableButton(group);
+                    }
                 }
             });
 
