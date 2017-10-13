@@ -49,21 +49,31 @@ public class Pile extends JPanel {
         }
         this.isEnable = value;
     }
+    
+    public boolean isSomeMatchSelect(){
+        for (Component item : getComponents()) {
+            if (item instanceof Match) {
+                if (((Match)item).isSelected()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
     public void removeMatches() {
         for (Component item : getComponents()) {
             if (item instanceof Match) {
-                Match match = (Match) item;
-                if (match.isSelected()) {
-                    remove(match);
+                if (((Match) item).isSelected()) {
+                    remove(item);
                     label.setText(countDownMatches());
-                    revalidate();
-                    repaint();
-                    matches.remove(match);
+                    matches.remove(item);
                 }
             }
         }
+        revalidate();
+        repaint();
 
     }
 
