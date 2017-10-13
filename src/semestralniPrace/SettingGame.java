@@ -90,7 +90,7 @@ public class SettingGame extends JPanel {
 
 
     private SpinnerModel integerModel() {
-        SpinnerModel model = new SpinnerNumberModel(1, 1, Helper.maxMatch, 1);
+        SpinnerModel model = new SpinnerNumberModel(6, 1, Helper.maxMatch, 1);
         return model;
     }
 
