@@ -26,32 +26,17 @@ public class Helper {
     public static Map<String, String> gameSetting = new HashMap<>();
 
 
-    public static long toBinary(long number) {
-        String temp = Long.toBinaryString(number);
-        return Long.parseLong(temp.toString());
-    }
-    public static long toDecimal(long number){
-        return Long.parseLong(Long.toString(number), 2);
-    }
+   
 
 
-    public static long binaryXOR(long... number) {
-        long result = 0;
-        for (long item : number) {
-            result = result ^ item;
-        }
-        return toBinary(result);
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(toBinary(9));
-        System.out.println(toBinary(1));
-        System.out.println(toBinary(2));
-        System.out.println("-----------");
-        System.out.println(binaryXOR(9, 10));
-        System.out.println(toDecimal(11));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(toBinary(9));
+//        System.out.println(toBinary(1));
+//        System.out.println(toBinary(2));
+//        System.out.println("-----------");
+//        System.out.println(binaryXOR(9, 10));
+//        System.out.println(toDecimal(11));
+//    }
 
 
     public static void disableButton(int group) {
