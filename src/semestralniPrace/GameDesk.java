@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import oponent.EasyOponent;
+import oponent.HardOponent;
 import oponent.Oponent;
 
 
@@ -24,7 +25,7 @@ public class GameDesk extends JPanel {
         setLayout(new MigLayout());
         createGameDesk();
         add(addRemoveButton());
-        oponent = new EasyOponent();
+        oponent = new HardOponent();
     }
 
 
