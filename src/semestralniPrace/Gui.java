@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
-import actions.ExitGameAction;
 import net.miginfocom.swing.MigLayout;
 
 
