@@ -108,9 +108,4 @@ public class Pile extends JPanel {
         return this.group;
     }
 
-
-    public int getCountOfMatches() {
-        return this.countOfMatches;
-    }
-
 }
