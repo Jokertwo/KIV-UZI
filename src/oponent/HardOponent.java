@@ -2,7 +2,7 @@ package oponent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import semestralniPrace.GameDesk;
 import semestralniPrace.Match;
 import semestralniPrace.Pile;
@@ -10,7 +10,7 @@ import semestralniPrace.Pile;
 
 public class HardOponent implements Oponent {
 
-    private Logger log = Logger.getLogger(HardOponent.class.getName());
+    private static final Logger log = Logger.getLogger(HardOponent.class);
 
     private List<Pile> piles;
     private List<int[]> numberOfMatchesDec;
@@ -54,9 +54,9 @@ public class HardOponent implements Oponent {
 
 
         String iXorRevers = ((new StringBuilder(Integer.toString(iXor)).reverse()).toString());
-        log.info("obraceny iXor : " + iXorRevers);
+        log.debug("obraceny iXor : " + iXorRevers);
         String numberToCompareReverse = ((new StringBuilder(Integer.toString(numberToCompare)).reverse()).toString());
-        log.info("Obraceny numberToCompare : " + numberToCompareReverse);
+        log.debug("Obraceny numberToCompare : " + numberToCompareReverse);
         
         if(iXorRevers.length() > numberToCompareReverse.length()){
             return false;
@@ -95,12 +95,24 @@ public class HardOponent implements Oponent {
 
 
     private int toBinary(int number) {
-        return Integer.parseInt(Integer.toString(number, 2));
+        int temp = -1;
+        try{
+        temp = Integer.parseInt(Integer.toString(number, 2));
+        }catch(NumberFormatException e){
+            log.error("Chyba pri prevodu desitkoveho cisla " +number+ " do binarnich cisel" ,e);
+        }
+        return temp;
     }
 
 
     private int toDecimal(int number) {
-        return Integer.parseInt(Integer.toString(number), 2);
+        int temp = -1;
+        try{
+            temp = Integer.parseInt(Integer.toString(number), 2);
+        }catch(NumberFormatException e){
+            log.error("Chyba pri prevodu binarniho cisla " + number+ " do desitkove soustavy");
+        }
+        return temp;
     }
 
 
@@ -114,10 +126,10 @@ public class HardOponent implements Oponent {
 
 
     private void chooseMatchesAndRemove(int matches, int pileGroup) {
-        log.info("Prochazim vsechny hromadky a spravnou skupinu ( skupina + " + pileGroup + ")");
+        log.debug("Prochazim vsechny hromadky a spravnou skupinu ( skupina + " + pileGroup + ")");
         for (Pile item : piles) {
             if (item.getGroup() == pileGroup) {
-                log.info("Nasel jsem skupinu a zacim odebirat " + matches + "zapalek/ku.");
+                log.info("Nasel jsem spravnou hromadku a zacim odebirat " + matches + " zapalek/ku.");
                 int counter = 0;
                 try {
                     Thread.sleep(900);
@@ -131,13 +143,14 @@ public class HardOponent implements Oponent {
                     counter++;
 
                     try {
+                        log.debug("Docasne uspani vlakna");
                         Thread.sleep(900);
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                     if (counter >= matches) {
-                        log.info("Odebiram");
+                        log.debug("Odebiram");
                         doClick();
                         init();
                         print();
@@ -147,7 +160,7 @@ public class HardOponent implements Oponent {
             }
         }
 
-        log.warning("Chyba nenasel jsem spravnou hromadku!!");
+        log.error("Chyba nenasel jsem spravnou hromadku!!");
     }
 
 }
