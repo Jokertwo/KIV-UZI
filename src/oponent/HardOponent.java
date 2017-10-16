@@ -85,9 +85,10 @@ public class HardOponent implements Oponent {
 
 
     private void print() {
+        log.debug("Reprezentace jednotlivych hromadek");
         for (int[] item : numberOfMatchesDec) {
             log.info(
-                "skupina : " + item[0] + " pocet sirek " + item[1] + " pocet sirek binar " + item[2] + ", vysledek : ");
+                "skupina : " + item[0] + " pocet sirek " + item[1] + " pocet sirek binar " + item[2]);
         }
         log.info("Vysledsek : " + binaryXOR());
 
