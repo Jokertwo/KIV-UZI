@@ -4,6 +4,9 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.apache.log4j.BasicConfigurator;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -19,6 +22,20 @@ public class Gui extends JFrame {
 
 
     public Gui() {
+        BasicConfigurator.configure();
+        try {
+            // Set System L&F
+            UIManager.setLookAndFeel(
+                "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (UnsupportedLookAndFeelException e) {
+            // handle exception
+        } catch (ClassNotFoundException e) {
+            // handle exception
+        } catch (InstantiationException e) {
+            // handle exception
+        } catch (IllegalAccessException e) {
+            // handle exception
+        }
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new MigLayout("w 300,h 300"));
         component.put(Helper.FRAME, this);
@@ -30,7 +47,7 @@ public class Gui extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         addWindowListener();
-
+        
         
     }
 

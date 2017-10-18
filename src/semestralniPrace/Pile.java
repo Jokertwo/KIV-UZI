@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 import net.miginfocom.swing.MigLayout;
 
 
@@ -19,6 +20,7 @@ public class Pile extends JPanel {
     private boolean isEnable = true;
     private JLabel label;
     public List<Match> matches;
+    private static final Logger LOGGER = Logger.getLogger(Pile.class);
 
 
     public Pile(int group) {
@@ -29,6 +31,7 @@ public class Pile extends JPanel {
 
         countOfMatches = (int) (Math.random() * Integer.parseInt(Helper.gameSetting.get(Helper.NUMBER_OF_MATCH))) + 1;
         init(group);
+        LOGGER.debug("Hromadka " + group + " vytvorena.");
     }
 
 
@@ -36,9 +39,11 @@ public class Pile extends JPanel {
         label = new JLabel(Integer.toString(countOfMatches));
         add(label);
         for (int i = 0; i < countOfMatches; i++) {
-            Match match = new Match(group);
+            Match match = new Match(group,i);
+            
             add(match);
             matches.add(match);
+            LOGGER.debug("Zapalka " + i + " z hromadky " + this.group + " vytvorena.");
         }
     }
 
@@ -79,7 +84,7 @@ public class Pile extends JPanel {
 
 
     public void addEmptyButton() {
-        Match match = new Match(group);
+        Match match = new Match(group,-1);
         match.setVisible(false);
         add(match);
     }

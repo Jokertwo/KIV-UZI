@@ -19,6 +19,7 @@ public class Match extends JToggleButton {
     private static final long serialVersionUID = 286040224829902214L;
 
     private int group;
+    private int id;
     static ImageIcon icon;
     static ImageIcon selectIcon;
     static {
@@ -46,10 +47,10 @@ public class Match extends JToggleButton {
     }
 
 
-    public Match(int group) {
+    public Match(int group,int id) {
         super(new MatchAction(group));
         this.group = group;
-
+        this.id = id;
         setIcon(icon);
         setSelectedIcon(selectIcon);
         setBorderPainted(false);
@@ -60,6 +61,9 @@ public class Match extends JToggleButton {
 
     public int getGroup() {
         return this.group;
+    }
+    public int getID(){
+        return this.id;
     }
 
 }
