@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * Pomocna trida
+ * 
+ * @author Petr
+ *
+ */
 public class Helper {
 
     public static final String PANEL = "panel";
@@ -26,19 +32,12 @@ public class Helper {
     public static Map<String, String> gameSetting = new HashMap<>();
 
 
-   
-
-
-//    public static void main(String[] args) {
-//        System.out.println(toBinary(9));
-//        System.out.println(toBinary(1));
-//        System.out.println(toBinary(2));
-//        System.out.println("-----------");
-//        System.out.println(binaryXOR(9, 10));
-//        System.out.println(toDecimal(11));
-//    }
-
-
+    /**
+     * Vypne tlacitka z dane hromadky
+     * 
+     * @param group
+     *            hromadka
+     */
     public static void disableButton(int group) {
         for (Pile pile : GameDesk.piles) {
             if (pile.getGroup() != group && pile.getIsEnable()) {
@@ -48,6 +47,13 @@ public class Helper {
     }
 
 
+    /**
+     * vraci true pokud v dane hromadce je alespon jedna oznacena zapalka
+     * 
+     * @param group
+     *            hromadka
+     * @return true / false
+     */
     public static boolean isSomeMatchInPileSelected(int group) {
         for (Pile pile : GameDesk.piles) {
             if (pile.getGroup() == group) {
@@ -56,21 +62,28 @@ public class Helper {
         }
         return false;
     }
-    
 
 
+    /**
+     * Uvolni zapalky z dane hromadky
+     * 
+     * @param group
+     *            hromadka
+     */
     public static void enableButton(int group) {
 
-        
-            for (Pile pile : GameDesk.piles) {
-                if (pile.getGroup() != group) {
-                    pile.setEnableMathes(true);
-                }
+        for (Pile pile : GameDesk.piles) {
+            if (pile.getGroup() != group) {
+                pile.setEnableMathes(true);
             }
-        
+        }
+
     }
 
 
+    /**
+     * Odstrani zapalky ze stolu
+     */
     public static void removeButton() {
         for (Pile pile : GameDesk.piles) {
             if (pile.getIsEnable()) {

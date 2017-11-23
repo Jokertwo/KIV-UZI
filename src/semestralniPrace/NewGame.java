@@ -2,7 +2,11 @@ package semestralniPrace;
 
 import javax.swing.JPanel;
 
-
+/**
+ * Vytvori novou hru
+ * @author Petr
+ *
+ */
 public class NewGame {
 
     Gui frame;

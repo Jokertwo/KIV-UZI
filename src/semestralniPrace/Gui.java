@@ -10,6 +10,12 @@ import org.apache.log4j.BasicConfigurator;
 import net.miginfocom.swing.MigLayout;
 
 
+/**
+ * Trida reprezentujici frame ve kterem se stridaji jednotlive panely
+ * 
+ * @author Petr
+ *
+ */
 public class Gui extends JFrame {
 
     public static Map<String, Component> component = new HashMap<>();
@@ -47,10 +53,8 @@ public class Gui extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         addWindowListener();
-        
-        
-    }
 
+    }
 
 
     public void addWindowListener() {

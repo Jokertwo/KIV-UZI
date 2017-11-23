@@ -3,7 +3,11 @@ package oponent;
 import org.apache.log4j.Logger;
 import semestralniPrace.Helper;
 
-
+/**
+ * Factory trida vytvarejici protivnika
+ * @author Petr
+ *
+ */
 public class Factory {
 
     private static final Logger LOG = Logger.getLogger(Factory.class);

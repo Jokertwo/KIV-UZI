@@ -6,7 +6,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
-
+/**
+ * Akce na ukonceni programu
+ * @author Petr
+ *
+ */
 public class ExitGameAction extends WindowAdapter implements ActionListener {
 
     @Override

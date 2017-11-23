@@ -15,7 +15,11 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import net.miginfocom.swing.MigLayout;
 
-
+/**
+ * nastaveni hry
+ * @author Petr
+ *
+ */
 public class SettingGame extends JPanel {
 
     /**

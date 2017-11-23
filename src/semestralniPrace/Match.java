@@ -10,7 +10,11 @@ import javax.swing.JToggleButton;
 import actions.MatchAction;
 import net.coobird.thumbnailator.Thumbnails;
 
-
+/**
+ * trida repreyentujici jednu zapalku na hraci plose
+ * @author Petr
+ *
+ */
 public class Match extends JToggleButton {
 
     /**

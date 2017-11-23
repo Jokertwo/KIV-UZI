@@ -1,14 +1,27 @@
 package oponent;
 
+import javax.swing.JButton;
 import semestralniPrace.GameDesk;
 import semestralniPrace.Match;
 import semestralniPrace.Pile;
 
+/**
+ * Trida repreyentujici lehkeho protivnika
+ * @author Petr
+ *
+ */
 
 public class EasyOponent implements Oponent {
       
+    private JButton remove;
+    
+    
+    /**
+     * Najivni algoritmus pro odebrani pseudo-nahodneho poctu zapalek
+     */
     @Override
     public void startPlay() {
+        remove.setEnabled(false);
         int counter = 0;
         try {
             Thread.sleep(100);
@@ -35,6 +48,11 @@ public class EasyOponent implements Oponent {
             }
         }      
         doClick();
+        if(checkWin()){
+            informAboutWin("Easy oponent");
+            return;
+        }
+        remove.setEnabled(true);
     }
     
 
@@ -56,6 +74,14 @@ public class EasyOponent implements Oponent {
     @Override
     public void run() {
         startPlay();
+        
+    }
+
+
+
+    @Override
+    public void setRemove(JButton remove) {
+        this.remove = remove;
         
     }
 

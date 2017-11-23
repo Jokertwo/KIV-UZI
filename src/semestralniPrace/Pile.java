@@ -9,6 +9,13 @@ import org.apache.log4j.Logger;
 import net.miginfocom.swing.MigLayout;
 
 
+/**
+ * Trida reprezentujici jednu hromadku obsahujici sirky
+ * 
+ * @author Petr
+ *
+ */
+
 public class Pile extends JPanel {
 
     /**
@@ -39,8 +46,8 @@ public class Pile extends JPanel {
         label = new JLabel(Integer.toString(countOfMatches));
         add(label);
         for (int i = 0; i < countOfMatches; i++) {
-            Match match = new Match(group,i);
-            
+            Match match = new Match(group, i);
+
             add(match);
             matches.add(match);
             LOGGER.debug("Zapalka " + i + " z hromadky " + this.group + " vytvorena.");
@@ -48,17 +55,28 @@ public class Pile extends JPanel {
     }
 
 
+    /**
+     * Zdimne/uvolni vsechny zapalky v hromadce
+     * 
+     * @param value
+     */
     public void setEnableMathes(boolean value) {
         for (Match item : matches) {
             item.setEnabled(value);
         }
         this.isEnable = value;
     }
-    
-    public boolean isSomeMatchSelect(){
+
+
+    /**
+     * Zjisti jestli je nejaka zapalka z hromadky oznacena
+     * 
+     * @return
+     */
+    public boolean isSomeMatchSelect() {
         for (Component item : getComponents()) {
             if (item instanceof Match) {
-                if (((Match)item).isSelected()) {
+                if (((Match) item).isSelected()) {
                     return true;
                 }
             }
@@ -67,6 +85,9 @@ public class Pile extends JPanel {
     }
 
 
+    /**
+     * Odstrani oznacene zapalky z hromadky
+     */
     public void removeMatches() {
         for (Component item : getComponents()) {
             if (item instanceof Match) {
@@ -83,13 +104,21 @@ public class Pile extends JPanel {
     }
 
 
+    /**
+     * prida praydne tlacitku pro zachovani Layoutu ----- neni ro prilis stastne reseni------
+     */
     public void addEmptyButton() {
-        Match match = new Match(group,-1);
+        Match match = new Match(group, -1);
         match.setVisible(false);
         add(match);
     }
 
 
+    /**
+     * Pocet zbyvajicich zapalek v hromadce
+     * 
+     * @return
+     */
     public int getLeftMatches() {
         return countOfMatches;
     }

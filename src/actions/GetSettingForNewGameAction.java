@@ -7,6 +7,12 @@ import semestralniPrace.Gui;
 import semestralniPrace.Helper;
 import semestralniPrace.SettingGame;
 
+/**
+ * Vztvori panel s nastavenim hry a nasledne vytvori nou hru
+ *  ---- > kdyz se na to ted koukam zaslozilo bz to predelat protoze takovzto mechanizmus by v akci asi nemel byt
+ * @author Petr
+ *
+ */
 
 public class GetSettingForNewGameAction implements ActionListener {
 

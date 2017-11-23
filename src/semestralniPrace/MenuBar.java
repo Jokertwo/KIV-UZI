@@ -6,7 +6,11 @@ import javax.swing.JMenuItem;
 import actions.ExitGameAction;
 import actions.GetSettingForNewGameAction;
 
-
+/**
+ * Menu aplikace obsahuji polozku pro novou hru a ukonceni hry
+ * @author Petr
+ *
+ */
 public class MenuBar extends JMenuBar {
     
     /**
@@ -16,7 +20,6 @@ public class MenuBar extends JMenuBar {
 
     public MenuBar() {
         add(game());
-        add(help());
     }
 
 
@@ -34,6 +37,10 @@ public class MenuBar extends JMenuBar {
     }
 
 
+    /**
+     * v menu mela byt puvodne i napoveda ale nezbyl cas ji dodelat
+     * @return
+     */
     private JMenu help() {
         JMenu help = new JMenu("Help");
 
