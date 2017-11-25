@@ -73,9 +73,7 @@ public class GameDesk extends JPanel {
                 // check if player wins
                 if (!checkWin()) {
                     oponent.setRemove(remove);
-                    Thread thread = new Thread((Runnable) oponent);
-                    thread.start();
-
+                    oponent.startPlay();
                 } else {
                     informAboutWin("Player");
                     remove.setEnabled(false);

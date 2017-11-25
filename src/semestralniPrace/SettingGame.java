@@ -37,7 +37,7 @@ public class SettingGame extends JPanel {
     private JSpinner countOfPile;
     private JSpinner matchInPile;
 
-    private String[] listOfDifficulty = { Helper.EASY, Helper.MEDIUM, Helper.HARD };
+    private String[] listOfDifficulty = { Helper.EASY, Helper.HARD };
 
 
     public SettingGame() {
@@ -46,7 +46,7 @@ public class SettingGame extends JPanel {
 
         add(playerVsComp);
         add(difficultyLevel(), "wrap,growx,pushx");
-        add(playerVsPlayer, "wrap");
+//        add(playerVsPlayer, "wrap");
 
         add(new JSeparator(JSeparator.HORIZONTAL), "span 2, wrap, growx,pushx");
 
@@ -71,7 +71,7 @@ public class SettingGame extends JPanel {
         ((DefaultEditor) countOfPile.getEditor()).getTextField().setEditable(false);
 
         group.add(playerVsComp);
-        group.add(playerVsPlayer);
+//        group.add(playerVsPlayer);
 
         addListenerToPlayervsComp();
         addListenerToPlayerVsPlayer();

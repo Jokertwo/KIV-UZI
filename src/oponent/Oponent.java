@@ -1,10 +1,7 @@
 package oponent;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import semestralniPrace.GameDesk;
-import semestralniPrace.Helper;
-import semestralniPrace.Pile;
+
 
 /**
  * Rozhrani protihrace
@@ -13,32 +10,19 @@ import semestralniPrace.Pile;
  *
  */
 
-public interface Oponent extends Runnable{
-    
-    
-    
+public interface Oponent {
+
+    /**
+     * spusteni hry protivnika
+     */
     public void startPlay();
-    
-    
-    default void doClick(){
-                Helper.removeButton();                     
-    }
-    
-    default boolean checkWin() {
-        int sum = 0;
-        for (Pile pile : GameDesk.piles) {
-            sum += pile.getLeftMatches();
-        }
-        if (sum > 0) {
-            return false;
-        }
-        return true;
-    }
-    
-    default void  informAboutWin(){
-        JOptionPane.showMessageDialog(null, Helper.gameSetting.get(Helper.OPONENT) + " win's!!!!!");
-    }
-    
+
+
+    /**
+     * nastavemi tlacitka pro odebrani sirek
+     * 
+     * @param remove JButton
+     */
     public void setRemove(JButton remove);
 
 }

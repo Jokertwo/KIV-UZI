@@ -1,9 +1,11 @@
 package oponent;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 import algoritmusNim.Algoritmus;
 import semestralniPrace.GameDesk;
+import semestralniPrace.Helper;
 import semestralniPrace.Match;
 import semestralniPrace.Pile;
 
@@ -29,21 +31,21 @@ public class OponentImpl implements Oponent {
 
 
     @Override
-    public void run() {
-        startPlay();
-    }
-
-
-    @Override
     public void startPlay() {
-        remove.setEnabled(false);
-        chooseMatchesAndRemove(algoritmus.getMove(GameDesk.piles));
-        if (checkWin()) {
-            informAboutWin();
-            return;
-        }
-        remove.setEnabled(true);
-        return;
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                remove.setEnabled(false);
+                chooseMatchesAndRemove(algoritmus.getMove(GameDesk.piles));
+                if (checkWin()) {
+                    informAboutWin();
+                    return;
+                }
+                remove.setEnabled(true);
+            }
+        });
+        thread.start();
+
     }
 
 
@@ -100,6 +102,28 @@ public class OponentImpl implements Oponent {
     public void setRemove(JButton remove) {
         this.remove = remove;
 
+    }
+
+
+    private void doClick() {
+        Helper.removeButton();
+    }
+
+
+    private boolean checkWin() {
+        int sum = 0;
+        for (Pile pile : GameDesk.piles) {
+            sum += pile.getLeftMatches();
+        }
+        if (sum > 0) {
+            return false;
+        }
+        return true;
+    }
+
+
+    private void informAboutWin() {
+        JOptionPane.showMessageDialog(null, Helper.gameSetting.get(Helper.OPONENT) + " win's!!!!!");
     }
 
 }
