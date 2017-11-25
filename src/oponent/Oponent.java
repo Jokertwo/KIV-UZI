@@ -35,8 +35,8 @@ public interface Oponent extends Runnable{
         return true;
     }
     
-    default void  informAboutWin(String name){
-        JOptionPane.showMessageDialog(null, name + " win's!!!!!");
+    default void  informAboutWin(){
+        JOptionPane.showMessageDialog(null, Helper.gameSetting.get(Helper.OPONENT) + " win's!!!!!");
     }
     
     public void setRemove(JButton remove);
