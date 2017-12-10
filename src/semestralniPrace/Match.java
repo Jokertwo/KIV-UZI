@@ -28,7 +28,7 @@ public class Match extends JToggleButton {
     static ImageIcon selectIcon;
     static {
         try {
-            BufferedImage match = ImageIO.read(new File("res/Match_Icon.png"));
+            BufferedImage match = ImageIO.read(new File("res/164959.png"));
             match = Thumbnails.of(match).forceSize(30, 50).asBufferedImage();
 
             BufferedImage select = ImageIO.read(new File("res/2000px-Cancelled_cross.svg.png"));

@@ -46,7 +46,7 @@ public class Gui extends JFrame {
         setLayout(new MigLayout("w 300,h 300"));
         component.put(Helper.FRAME, this);
         setJMenuBar(new MenuBar());
-        setTitle("NIM - easy");
+        setTitle("NIM");
         pack();
 
         setVisible(true);

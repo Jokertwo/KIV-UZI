@@ -1,5 +1,6 @@
 package algoritmusNim;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -30,7 +31,7 @@ public class AlgoritmusHardOponent implements Algoritmus {
             for (int[] temp : numberOfMatchesDec) {
                 if (checkNumber(iXor, temp[2])) {
                     log.info("Nasel jsem shodu. Hromadka s cislem : " + temp[0] + " a poctem sirek " + temp[1]);
-                    int tempXOR = temp[2] ^ iXor;
+                    int tempXOR = xor(temp[2], iXor);
                     log.info("Vysledek operace " + temp[2] + " XOR " + iXor + " je :" + tempXOR);
                     tempXOR = toDecimal(tempXOR);
                     log.info("Po prevodu do desitkove soustavy : " + tempXOR);
@@ -48,6 +49,11 @@ public class AlgoritmusHardOponent implements Algoritmus {
     }
 
 
+    private int xor(int a, int b) {
+        return toBinary((new BigInteger(String.valueOf(a), 2)).xor(new BigInteger(String.valueOf(b), 2)).intValue());
+    }
+
+
     public void setPiles(List<Pile> piles) {
         this.piles = piles;
     }
@@ -61,8 +67,11 @@ public class AlgoritmusHardOponent implements Algoritmus {
         numberOfMatchesDec.clear();
         for (Pile item : piles) {
             int[] temp = new int[3];
+            // cislo hromadky
             temp[0] = item.getGroup();
+            // pocet zbyvajicich sirek
             temp[1] = item.getLeftMatches();
+            // pocet zbyvajicich sirek v binarni reprezentaci
             temp[2] = toBinary(item.getLeftMatches());
             numberOfMatchesDec.add(temp);
         }
@@ -139,11 +148,11 @@ public class AlgoritmusHardOponent implements Algoritmus {
      * @return
      */
     private int binaryXOR() {
-        int result = 0;
+        BigInteger result = new BigInteger("0", 2);
         for (int[] item : numberOfMatchesDec) {
-            result = result ^ item[2];
+            result = result.xor(new BigInteger(String.valueOf(item[2]), 2));
         }
-        return result;
+        return toBinary(result.intValue());
     }
 
 
