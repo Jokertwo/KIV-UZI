@@ -5,6 +5,5 @@
 	<classpathentry kind="lib" path="C:/Users/Petr/workspace/UZI/MigLayout/miglayout-4.0-swing.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Petr/workspace/UZI/Thumbnailator/thumbnailator-0.4.8.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Petr/workspace/UZI/log4j/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Petr/workspace/UZI/laf/napkinlaf-alpha001.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
